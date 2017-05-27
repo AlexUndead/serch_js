@@ -1,8 +1,51 @@
-var a = 5;
+var byField = function(an){
 
-(function() {
-  alert(a)
-})()
+	return function ret (a,b){
+		return a[an] - b[an];
+	}
+	
+	
+}
+
+var users = [{
+  name: "Вася",
+  surname: 'Иванов',
+  age: 20
+}, {
+  name: "Петя",
+  surname: 'Чапаев',
+  age: 25
+}, {
+  name: "Маша",
+  surname: 'Медведева',
+  age: 18
+}];
+users.sort(byField('age'));
+users.forEach(function(user) {
+  alert( user.name );
+})
+
+
+/*function makeBuffer(){
+	var sumArg = "";
+	function takeBuffer(a){
+		if(a != undefined){
+			sumArg += a;
+		}else{
+			alert(sumArg);
+		}
+	}
+	takeBuffer.clear = function(){
+		sumArg = "";
+	}
+	takeBuffer.log = function(){
+		sumArg = console.log(takeBuffer);
+	}
+	return takeBuffer;
+	
+}
+var buffer = makeBuffer();*/
+
 /*var counter = makeCounter();
 alert( counter() ); 
 alert( counter() ); 

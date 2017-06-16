@@ -1,4 +1,86 @@
-var byField = function(an){
+function Calculator (){
+	this.obuch = {};
+	this.calculate = function (string){
+		this.obj = string.split(' ');
+		var a = this.obj[0];
+		var b = this.obj[2];
+		if (this.obj[1] == '+'){
+			return +a + +b;
+		}
+		else if (this.obj[1] == '-'){
+			return +a - +b;
+		}
+		else if (this.obj[1] in this.obuch){ 
+			return this.obuch[this.obj[1]](a, b);//this.obj[1];
+		}
+	}
+	this.addMethod = function (name, func){
+		this.obuch[name] = func;
+		//console.log(this.obuch);
+	}
+}
+
+
+var calc = new Calculator;
+//calc.calculate('45 + 4');
+calc.addMethod("*", function(a, b) {
+  return a * b;
+});
+calc.addMethod("/", function(a, b) {
+  return a / b;
+});
+
+console.log(calc.calculate('4 * 2'));
+/*function Accumulator (a){
+	this.value = a;
+	this.read = function () {
+		this.value += +prompt('Введите число');
+	}
+
+}
+var accumulator = new Accumulator(2);
+accumulator.read();
+accumulator.read();
+console.log(accumulator.value);*/
+
+/*function Calculator(){
+	//this.a = '';
+	//this.b = '';
+	this.read = function(){
+		this.a = +prompt('Введите а');
+		this.b = +prompt('Введите б');
+	}
+	this.sum = function(){
+		return this.a + this.b;
+	}
+	this.umnoj = function(){
+		return this.a * this.b;
+	}
+	//this.sum = a + b;
+}
+
+var calculator = new Calculator();
+calculator.read();
+console.log(calculator.sum());*/
+//calculator.sum;
+
+
+/*var calculator = {
+	read: function(){
+		var a = prompt('Введите первое число');
+		var b = prompt('Введите второе число');
+		this.a = a;
+		this.b = b;
+	},
+
+	sum: function(){
+		return this.a + this.b;
+	}
+}
+calculator.read();
+alert(calculator.sum());*/
+//console.log(calculator.sum());
+/*var byField = function(an){
 
 	return function ret (a,b){
 		return a[an] - b[an];
@@ -23,7 +105,7 @@ var users = [{
 users.sort(byField('age'));
 users.forEach(function(user) {
   alert( user.name );
-})
+})*/
 
 
 /*function makeBuffer(){

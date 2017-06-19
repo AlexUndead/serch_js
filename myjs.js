@@ -1,4 +1,34 @@
-function Calculator (){
+function User(fullName) {
+  
+  this.fullName = fullName;
+  this.split = this.fullName.split(' ');
+  Object.defineProperty(this, "firstName", {
+  	set: function(value){
+  		this.fullName = value +' '+ this.fullName.split(' ')[1];
+  	},
+  	get: function(){
+  		return this.fullName.split(' ')[0];
+  	}
+  });
+  Object.defineProperty(this, "lastName", {
+  	set: function(value){
+  		this.fullName = this.split[0] +' '+ value;
+  	},
+  	get: function(){
+  		return this.split[1];
+  	}
+  });
+}
+
+var vasya = new User("Василий Попкин");
+console.log(vasya.fullName);
+vasya.firstName = "леха";
+console.log(vasya.fullName);
+console.log(vasya.firstName);
+
+
+
+/*function Calculator (){
 	this.obuch = {};
 	this.calculate = function (string){
 		this.obj = string.split(' ');
@@ -30,7 +60,9 @@ calc.addMethod("/", function(a, b) {
   return a / b;
 });
 
-console.log(calc.calculate('4 * 2'));
+console.log(calc.calculate('4 * 2'));*/
+
+
 /*function Accumulator (a){
 	this.value = a;
 	this.read = function () {
